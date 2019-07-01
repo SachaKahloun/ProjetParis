@@ -3,10 +3,16 @@
 $query = $db->query('SELECT news.*, medias.img, medias.video
 FROM news
 INNER JOIN medias
-ON news.id = medias.new_id');
+ON news.id = medias.new_id 
+WHERE publish_at <= NOW()
+AND is_publish = 1');
 
 $news = $query->fetchAll();
 
+if ($news == false) {
+    header('location:index.php');
+    exit;
+}
 ?>
 
 

@@ -74,19 +74,19 @@ if (isset($_POST['save'])) {
 
 if (isset($_POST['update'])) {
 
-    if (!empty($_POST['title']) AND !empty($_POST['summary']) AND !empty($_POST['content']) AND !empty($_POST['is_publish']) AND !empty($_POST['publish_at']) AND !empty($_FILES['image']['name'])) {
+    if (!empty($_POST['title']) AND !empty($_POST['summary']) AND !empty($_POST['content'])){
 
-        $query = $db->prepare('UPDATE news SET
+        $queryUpdateNew = $db->prepare('UPDATE news SET
 		title = :title,
 		summary = :summary,
 		content = :content,
 		is_publish = :is_publish,
-		publish_at =:publish_at
-		WHERE id = :id'
-        );
+		publish_at = :publish_at
+		WHERE id = :id');
+
 
         //mise à jour avec les données du formulaire
-        $resultNew = $query->execute([
+        $resultNew = $queryUpdateNew->execute([
             'title' => htmlspecialchars($_POST['title']),
             'summary' => htmlspecialchars($_POST['summary']),
             'content' => htmlspecialchars($_POST['content']),
@@ -94,6 +94,7 @@ if (isset($_POST['update'])) {
             'publish_at' => $_POST['publish_at'],
             'id' => $_POST['id'],
         ]);
+
 
 
         //si enregistrement ok
@@ -130,6 +131,7 @@ if (isset($_POST['update'])) {
 
             header('location:news_list.php');
             exit;
+
         } else {
             $message = 'Erreur.';
         }
@@ -155,7 +157,7 @@ if (isset($_GET['new_id'])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
