@@ -1,6 +1,4 @@
-<?php require_once('_tools.php'); ?>
-
-<?php
+<?php require_once('_tools.php');
 
 if (isset($_POST['login'])) {
 
@@ -18,21 +16,15 @@ if (isset($_POST['login'])) {
 
             header('location:espace_personnel.php');
             exit();
-        }
-        else{
+        } else {
             $message = 'Email ou mot de passe incorrect.';
         }
-    }
-
-
-else{
+    } else {
         $message = 'Veuillez remplir tous les champs obligatoires.';
 
     }
 
-}
-
-else {
+} else {
     $email = NULL;
     $password = NULL;
 }
@@ -85,7 +77,7 @@ if (isset($_GET['logout'])) {
             </div>
             <div style="color: #CD0018">
                 <?php if (isset($message)): ?>
-                <?php echo $message; ?>
+                    <?php echo $message; ?>
                 <?php endif; ?>
             </div>
         </form>

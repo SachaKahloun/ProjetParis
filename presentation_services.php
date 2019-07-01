@@ -1,6 +1,4 @@
-<?php require_once('_tools.php'); ?>
-
-<?php
+<?php require_once('_tools.php');
 
 $query = $db->query('SELECT *
 FROM services
@@ -12,7 +10,6 @@ ON medias_services.media_id = medias.id');
 $services = $query->fetchAll();
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -29,13 +26,14 @@ $services = $query->fetchAll();
         .active, .collapsiblePresentation:hover {
             background-color: white;
         }
+
         .active:after {
             content: "\2212";
         }
     </style>
 </head>
 <body>
-<?php require_once 'partials/header.php'?>
+<?php require_once 'partials/header.php' ?>
 
 <section class="container">
     <div class="generaleAll">
@@ -98,22 +96,27 @@ $services = $query->fetchAll();
     <h2 class="h2Presentation">Services de la ville</h2>
 </section>
 <section class="allService">
-<?php foreach ($services as $service): ?>
-    <section class="serviceContainer">
+    <?php foreach ($services as $service): ?>
+        <section class="serviceContainer">
 
-            <div class="globalPictureService"><img class="pictureService" alt="" src="img/<?php echo $service['img']; ?>"></div>
-            <div class="titleService"><?php echo $service['title'];?></div>
-            <div class="placeService"><?php echo $service['address'];?></div>
-            <div class="openService"><?php echo $service['opening_days'];?></div>
+            <div class="globalPictureService"><img class="pictureService" alt=""
+                                                   src="img/<?php echo $service['img']; ?>"></div>
+            <div class="titleService"><?php echo $service['title']; ?></div>
+            <div class="placeService"><?php echo $service['address']; ?></div>
+            <div class="openService"><?php echo $service['opening_days']; ?></div>
             <div class="hoursService">Horaires :
-                <?php echo $service['open_at'];?>
-                <?php echo $service['close_at']?>
+                <?php echo $service['open_at']; ?>
+                <?php echo $service['close_at'] ?>
             </div>
-            <div class="telService">Téléphone : <a href="tel:<?php echo $service['phone_number'];?>"><?php echo $service['phone_number'];?></a></div>
-            <div class="viewService"><button id="<?php echo $service['service_id']; ?>" class="mapService">En savoir plus...</button></div>
-    </section>
+            <div class="telService">Téléphone : <a
+                        href="tel:<?php echo $service['phone_number']; ?>"><?php echo $service['phone_number']; ?></a>
+            </div>
+            <div class="viewService">
+                <button id="<?php echo $service['service_id']; ?>" class="mapService">En savoir plus...</button>
+            </div>
+        </section>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 </section>
 
 

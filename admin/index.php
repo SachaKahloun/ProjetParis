@@ -1,11 +1,11 @@
-<?php require ('../_tools.php'); ?>
+<?php require('../_tools.php'); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 
     <title>Administration - Mon premier blog !</title>
     <?php require 'partials/head_assets.php'; ?>
-
 
 
 </head>

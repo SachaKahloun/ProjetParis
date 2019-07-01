@@ -1,7 +1,4 @@
-<?php require_once('_tools.php'); ?>
-
-
-<?php
+<?php require_once('_tools.php');
 
 $query = $db->query('SELECT *
 FROM faq_category');
@@ -29,6 +26,7 @@ $questions = $query->fetchAll();
         .active, .otherColl:hover {
             background-color: #ccc;
         }
+
         .active:after {
             content: "\2796"; /* Unicode character for "minus" sign (-) */
         }
@@ -45,21 +43,21 @@ $questions = $query->fetchAll();
 </section>
 
 <section class="containQuestion">
-<?php foreach ($categories as $category): ?>
-    <button class="otherColl">
-        <?php echo $category['name']; ?>
-    </button>
-    <div class="contentColl">
-        <?php foreach ($questions as $question) : ?>
+    <?php foreach ($categories as $category): ?>
+        <button class="otherColl">
+            <?php echo $category['name']; ?>
+        </button>
+        <div class="contentColl">
+            <?php foreach ($questions as $question) : ?>
 
-            <?php if ($question['id_faq_category'] == $category['id'])  : ?>
-                <p><?php echo html_entity_decode($question['question']); ?></p>
-                <div class="answer"><?php echo html_entity_decode($question['answer']); ?></div>
-            <?php endif; ?>
+                <?php if ($question['id_faq_category'] == $category['id'])  : ?>
+                    <p><?php echo html_entity_decode($question['question']); ?></p>
+                    <div class="answer"><?php echo html_entity_decode($question['answer']); ?></div>
+                <?php endif; ?>
 
-        <?php endforeach; ?>
-    </div>
-<?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
 </section>
 
 

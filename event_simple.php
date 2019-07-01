@@ -1,6 +1,5 @@
-<?php require_once '_tools.php'?>
+<?php require_once('_tools.php');
 
-<?php
 header("Access-Control-Allow-Origin: *");
 
 
@@ -16,16 +15,14 @@ $queryID->execute(array($date));
 $event=$queryID->fetchAll();*/
 
 
-if(count($event) > 0){
+if (count($event) > 0) {
 
     echo json_encode($event);
 
-}
+} else {
 
-else{
-
-    $eventResp -> type = 0;
-    $eventResp -> message = "Il n'y aucun événément à cette date";
+    $eventResp->type = 0;
+    $eventResp->message = "Il n'y aucun événément à cette date";
 
     echo json_encode($eventResp);
 }

@@ -1,6 +1,4 @@
-<?php require_once('_tools.php'); ?>
-
-<?php
+<?php require_once('_tools.php');
 
 header("Access-Control-Allow-Origin: *");
 
@@ -31,8 +29,6 @@ else{
 }
 
 echo json_encode($response);
-
-
 
 ?>
 

@@ -1,6 +1,4 @@
-<?php require_once('_tools.php'); ?>
-
-<?php
+<?php require_once('_tools.php');
 
 $query = $db->query('SELECT news.*, medias.img, medias.video
 FROM news
@@ -8,6 +6,7 @@ INNER JOIN medias
 ON news.id = medias.new_id');
 
 $news = $query->fetchAll();
+
 ?>
 
 
@@ -26,7 +25,7 @@ $news = $query->fetchAll();
 </head>
 <body>
 
-<?php require_once 'partials/header.php'?>
+<?php require_once 'partials/header.php' ?>
 
 <section class="container">
     <div class="generaleAll">
@@ -37,23 +36,22 @@ $news = $query->fetchAll();
     <h1>Les grandes actualités</h1>
 </section>
 <?php foreach ($news as $new): ?>
-        <section class="<?php if ($new['id'] % 2 != 0){
-            echo 'primary grey';
-        }
-        else{
-            echo 'primary';
-        }; ?>">
-            <h2 class="h2NewList"><?= html_entity_decode($new['title']); ?></h2>
-            <section class="secondContainerNewList">
-                <div class="globalPictureNewList"><img class="pictureNewList" alt="" src="img/<?php echo $new['img']; ?>"></div>
-                <div class="summaryNewList"><?php echo html_entity_decode($new['summary']); ?></div>
-            </section>
-            <div class="learnNewList">
-                <a href="new.php?new_id=<?php echo $new['id'];?>">Lire l'actu...</a>
+    <section class="<?php if ($new['id'] % 2 != 0) {
+        echo 'primary grey';
+    } else {
+        echo 'primary';
+    }; ?>">
+        <h2 class="h2NewList"><?= html_entity_decode($new['title']); ?></h2>
+        <section class="secondContainerNewList">
+            <div class="globalPictureNewList"><img class="pictureNewList" alt="" src="img/<?php echo $new['img']; ?>">
             </div>
+            <div class="summaryNewList"><?php echo html_entity_decode($new['summary']); ?></div>
         </section>
+        <div class="learnNewList">
+            <a href="new.php?new_id=<?php echo $new['id']; ?>">Lire l'actu...</a>
+        </div>
+    </section>
 <?php endforeach; ?>
-
 
 <?php require_once 'partials/footer.php'; ?>
 

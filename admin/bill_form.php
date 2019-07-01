@@ -1,5 +1,4 @@
 <?php
-
 require('../_tools.php');
 
 if (isset($_POST['save'])) {
@@ -7,10 +6,10 @@ if (isset($_POST['save'])) {
 
     if (!empty($_POST['bill_from']) AND !empty($_POST['amount_due']) AND !empty($_POST['bill_date']) AND !empty($_FILES['image']['name'])) {
 
-        $allowed_extensions = array( 'pdf' );
-        $my_file_extension = pathinfo( $_FILES['image']['name'] , PATHINFO_EXTENSION);
+        $allowed_extensions = array('pdf');
+        $my_file_extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
-        if (in_array($my_file_extension , $allowed_extensions)) {
+        if (in_array($my_file_extension, $allowed_extensions)) {
             $new_file_name = md5(rand());
             $destination = '../assets/pdf/' . $new_file_name . '.' . $my_file_extension;
             $result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
@@ -33,8 +32,7 @@ if (isset($_POST['save'])) {
             $message = "Facture ajoutée avec succès !";
             header('location:bill_list.php');
             exit();
-        }
-        else{
+        } else {
             $error = 'Le fichier ne repond pas aux critères demandés.';
         }
     } else {
@@ -110,7 +108,7 @@ if (isset($_POST['save'])) {
                 </div>
                 <div class="form-group">
                     <label for="image">Image :</label>
-                    <input class="form-control" type="file" name="image" id="image" />
+                    <input class="form-control" type="file" name="image" id="image"/>
 
                     <?php if (isset($_POST['image']) AND (empty($_POST['image']))) : ?>
                         <div style="color: #CD0018">
@@ -129,8 +127,8 @@ if (isset($_POST['save'])) {
 
 
                 <div class="text-right">
-                        <!-- Si $user existe, on affiche un lien de mise à jour -->
-                        <input class="btn btn-success" type="submit" name="save" value="Enregistrer"/>
+                    <!-- Si $user existe, on affiche un lien de mise à jour -->
+                    <input class="btn btn-success" type="submit" name="save" value="Enregistrer"/>
                 </div>
 
 

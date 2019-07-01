@@ -1,18 +1,17 @@
 <?php
-require ('../_tools.php');
+require('../_tools.php');
 
 //supprimer l'utilisateur dont l'ID est envoyé en paramètre URL
-if(isset($_GET['user_id']) && isset($_GET['action']) && $_GET['action'] == 'delete'){
+if (isset($_GET['user_id']) && isset($_GET['action']) && $_GET['action'] == 'delete') {
 
     $query = $db->prepare('DELETE FROM users WHERE id = ?');
     $result = $query->execute([
         $_GET['user_id']
     ]);
     //générer un message à afficher plus bas pour l'administrateur
-    if($result){
+    if ($result) {
         $message = "Suppression efféctuée.";
-    }
-    else{
+    } else {
         $message = "Impossible de supprimer la séléction.";
     }
 }
@@ -24,7 +23,7 @@ $users = $query->fetchall();
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Administration des utilisateurs - Mon premier blog !</title>
     <?php require 'partials/head_assets.php'; ?>
@@ -38,7 +37,6 @@ $users = $query->fetchall();
 
     <div class="row my-3 index-content">
         <?php require 'partials/nav.php'; ?>
-
 
 
         <section class="col-9">
@@ -70,10 +68,10 @@ $users = $query->fetchall();
                 <tbody>
                 <?php foreach ($users as $key => $user) : ?>
                     <tr>
-                        <td><?php echo $user['id']?></td>
-                        <td><?php echo $user['firstname']?></td>
-                        <th><?php echo $user['lastname']?></th>
-                        <th><?php echo $user['email']?></th>
+                        <td><?php echo $user['id'] ?></td>
+                        <td><?php echo $user['firstname'] ?></td>
+                        <th><?php echo $user['lastname'] ?></th>
+                        <th><?php echo $user['email'] ?></th>
                         <th>
                             <?php if ($user['is_admin'] == 0): ?>
                                 0
@@ -82,9 +80,13 @@ $users = $query->fetchall();
                             <?php endif; ?>
                         </th>
                         <td>
-                            <a href="user_form.php?user_id=<?php echo $user['id']; ?>&action=edit" class="btn btn-warning">Modifier</a>
-                            <a onclick="return confirm('Are you sure?')" href="user_list.php?user_id=<?php echo $user['id']; ?>&action=delete" class="btn btn-danger">Supprimer</a>
-                            <a href="bill_form.php?user_id=<?php echo $user['id']; ?>&action=edit" class="btn btn-info">Ajouter une facture</a>
+                            <a href="user_form.php?user_id=<?php echo $user['id']; ?>&action=edit"
+                               class="btn btn-warning">Modifier</a>
+                            <a onclick="return confirm('Are you sure?')"
+                               href="user_list.php?user_id=<?php echo $user['id']; ?>&action=delete"
+                               class="btn btn-danger">Supprimer</a>
+                            <a href="bill_form.php?user_id=<?php echo $user['id']; ?>&action=edit" class="btn btn-info">Ajouter
+                                une facture</a>
 
                         </td>
                     </tr>

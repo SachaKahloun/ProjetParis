@@ -1,18 +1,17 @@
 <?php
-require ('../_tools.php');
+require('../_tools.php');
 
 //supprimer l'utilisateur dont l'ID est envoyé en paramètre URL
-if(isset($_GET['user_id']) && isset($_GET['action']) && $_GET['action'] == 'delete'){
+if (isset($_GET['user_id']) && isset($_GET['action']) && $_GET['action'] == 'delete') {
 
     $query = $db->prepare('DELETE FROM bills WHERE id = ?');
     $result = $query->execute([
         $_GET['user_id']
     ]);
     //générer un message à afficher plus bas pour l'administrateur
-    if($result){
+    if ($result) {
         $message = "Suppression efféctuée.";
-    }
-    else{
+    } else {
         $message = "Impossible de supprimer la séléction.";
     }
 }
@@ -40,7 +39,6 @@ $bills = $query->fetchall();
         <?php require 'partials/nav.php'; ?>
 
 
-
         <section class="col-9">
             <header class="pb-4 d-flex justify-content-between">
                 <h4>Liste des factures</h4>
@@ -51,7 +49,8 @@ $bills = $query->fetchall();
             <?php endif; ?>
 
             <!--            --><?php //if (isset($_SESSION['user']['message'])) : ?>
-            <!--                <div class="bg-success text-white p-2 mb-4">--><?php //echo $_SESSION['user']['message'] ; ?><!--/div>-->
+            <!--                <div class="bg-success text-white p-2 mb-4">-->
+            <?php //echo $_SESSION['user']['message'] ; ?><!--/div>-->
             <!--            --><?php //endif; ?>
 
             <?php if (isset($_GET['action'])): ?>
@@ -72,14 +71,16 @@ $bills = $query->fetchall();
                 <tbody>
                 <?php foreach ($bills as $key => $bill) : ?>
                     <tr>
-                        <td><?php echo $bill['id']?></td>
-                        <td><?php echo $bill['bill_from']?></td>
-                        <th><?php echo $bill['bill_date']?></th>
-                        <th><?php echo $bill['amount_due'].''.'€'?></th>
-                        <th><?php echo $bill['is_payed']?></th>
+                        <td><?php echo $bill['id'] ?></td>
+                        <td><?php echo $bill['bill_from'] ?></td>
+                        <th><?php echo $bill['bill_date'] ?></th>
+                        <th><?php echo $bill['amount_due'] . '' . '€' ?></th>
+                        <th><?php echo $bill['is_payed'] ?></th>
 
                         <td>
-                            <a onclick="return confirm('Are you sure?')" href="bill_list.php?user_id=<?php echo $bill['id']; ?>&action=delete" class="btn btn-danger">Supprimer</a>
+                            <a onclick="return confirm('Are you sure?')"
+                               href="bill_list.php?user_id=<?php echo $bill['id']; ?>&action=delete"
+                               class="btn btn-danger">Supprimer</a>
                         </td>
                     </tr>
 

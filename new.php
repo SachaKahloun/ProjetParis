@@ -1,6 +1,4 @@
-<?php require_once('_tools.php'); ?>
-
-<?php
+<?php require_once('_tools.php');
 
 if (isset($_GET['new_id']) AND ctype_digit($_GET['new_id'])) {
 
@@ -21,10 +19,7 @@ if (isset($_GET['new_id']) AND ctype_digit($_GET['new_id'])) {
 
 }
 
-
-
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -35,24 +30,24 @@ if (isset($_GET['new_id']) AND ctype_digit($_GET['new_id'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title><?php echo $newSimple['title']?></title>
+    <title><?php echo $newSimple['title'] ?></title>
 </head>
 
-<?php require_once 'partials/header.php'?>
+<?php require_once 'partials/header.php' ?>
 
 <body>
-    <div class="containerNew">
-        <div class="titleNew">
-            <h1><?php echo $newSimple['title'];?></h1>
-        </div>
-        <img class="pictureNew" alt="" src="img/<?php echo $newSimple['img']; ?>">
-        <div class="textNew">
-            <?php echo $newSimple ['summary'];?><br>
-            <?php echo $newSimple ['content'];?>
-        </div>
-        <a href="new_list.php" class="returnNew">Retour aux actualités</a>
+<div class="containerNew">
+    <div class="titleNew">
+        <h1><?php echo $newSimple['title']; ?></h1>
     </div>
-    <?php require_once 'partials/footer.php'; ?>
+    <img class="pictureNew" alt="" src="img/<?php echo $newSimple['img']; ?>">
+    <div class="textNew">
+        <?php echo $newSimple ['summary']; ?><br>
+        <?php echo $newSimple ['content']; ?>
+    </div>
+    <a href="new_list.php" class="returnNew">Retour aux actualités</a>
+</div>
+<?php require_once 'partials/footer.php'; ?>
 
 </body>
 </html>

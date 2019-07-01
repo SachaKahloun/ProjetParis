@@ -1,6 +1,5 @@
-<?php require_once('_tools.php'); ?>
-
 <?php
+require_once('_tools.php');
 
 if (isset($_GET['event_id']) AND ctype_digit($_GET['event_id'])) {
     $query = $db->prepare('SELECT *
@@ -12,7 +11,6 @@ if (isset($_GET['event_id']) AND ctype_digit($_GET['event_id'])) {
     WHERE events.id = ?');
     $query->execute(array($_GET['event_id']));
     $eventSimple = $query->fetch();
-
 
 
     //si aucun article n'a été trouvé je redirige
@@ -43,28 +41,29 @@ if (isset($_GET['event_id']) AND ctype_digit($_GET['event_id'])) {
 <?php require_once 'partials/header.php'; ?>
 
 <body>
-    <div class="titleofEvent">
-        <h1><?php echo $eventSimple['title'];?></h1>
-    </div>
-    <section class="all">
-        <div class="globalPicture">
-            <img class="picture" alt="" src="img/<?php echo $eventSimple['img']; ?>">
-            <div class="textofEvent">
-                <?php echo $eventSimple['summary'];?>
-                <?php echo $eventSimple['content'];?><br><br>
-                Adresse: <?php echo $eventSimple['address'];?><br><br>
-                Date: <?php echo $eventSimple['event_date'];?><br><br>
-                Heure: <?php echo $eventSimple['event_time'];?>
-            </div>
+<div class="titleofEvent">
+    <h1><?php echo $eventSimple['title']; ?></h1>
+</div>
+<section class="all">
+    <div class="globalPicture">
+        <img class="picture" alt="" src="img/<?php echo $eventSimple['img']; ?>">
+        <div class="textofEvent">
+            <?php echo $eventSimple['summary']; ?>
+            <?php echo $eventSimple['content']; ?><br><br>
+            Adresse: <?php echo $eventSimple['address']; ?><br><br>
+            Date: <?php echo $eventSimple['event_date']; ?><br><br>
+            Heure: <?php echo $eventSimple['event_time']; ?>
         </div>
-        <div class="map">
-            <iframe class="secondMap" src="<?php echo $eventSimple['coordonates']?>" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-    </section>
-    <div class="globalReturn">
-        <a href="event_list.php" class="return">Retour aux evenements</a>
     </div>
-    <?php require_once 'partials/footer.php'; ?>
+    <div class="map">
+        <iframe class="secondMap" src="<?php echo $eventSimple['coordonates'] ?>" frameborder="0" style="border:0"
+                allowfullscreen></iframe>
+    </div>
+</section>
+<div class="globalReturn">
+    <a href="event_list.php" class="return">Retour aux evenements</a>
+</div>
+<?php require_once 'partials/footer.php'; ?>
 
 </body>
 </html>

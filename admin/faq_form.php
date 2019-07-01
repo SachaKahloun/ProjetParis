@@ -1,10 +1,10 @@
 <?php
 require('../_tools.php');
 
-if(isset($_POST['save'])) {
+if (isset($_POST['save'])) {
 //print_r($_POST);
 //die();
-    if (!empty($_POST['question']) AND !empty($_POST['answer']) AND !empty($_POST['categories'])){
+    if (!empty($_POST['question']) AND !empty($_POST['answer']) AND !empty($_POST['categories'])) {
         $query = $db->prepare('INSERT INTO faq_questions (id_faq_category, question, answer) VALUES (?, ?, ?)');
         $newQuestion = $query->execute(
             [
@@ -13,13 +13,12 @@ if(isset($_POST['save'])) {
                 htmlspecialchars($_POST['answer']),
             ]
         );
-    }
-    else{
+    } else {
         $error = 'Veuillez remplir les champs obligatoires';
     }
 }
 
-if (isset($_POST['update'])){
+if (isset($_POST['update'])) {
     if (!empty($_POST['question']) AND !empty($_POST['answer']) AND !empty($_POST['categories'])){
 
         $query = $db->prepare('UPDATE faq_questions SET
@@ -39,13 +38,12 @@ if (isset($_POST['update'])){
         $message = 'Question/réponse mis à jour avec succés.';
         header('location:faq_list.php');
         exit();
-    }
-    else{
+    } else {
         $message = 'Veuillez rentrer les champs obligatoires.';
     }
 }
 
-if(isset($_GET['faq_questions_id']) && isset($_GET['action']) && $_GET['action'] == 'edit'){
+if (isset($_GET['faq_questions_id']) && isset($_GET['action']) && $_GET['action'] == 'edit'){
 
     $query = $db->prepare('SELECT * FROM faq_questions WHERE id = ?');
     $query->execute(array($_GET['faq_questions_id']));
@@ -59,8 +57,6 @@ if(isset($_GET['faq_questions_id']) && isset($_GET['action']) && $_GET['action']
 }
 
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +64,7 @@ if(isset($_GET['faq_questions_id']) && isset($_GET['action']) && $_GET['action']
 <head>
 
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
-    <script>tinymce.init({selector:'textarea'});</script>
+    <script>tinymce.init({selector: 'textarea'});</script>
 
     <title>Administration des questions/réponses - Mon premier blog !</title>
     <?php require 'partials/head_assets.php'; ?>
@@ -96,19 +92,21 @@ if(isset($_GET['faq_questions_id']) && isset($_GET['action']) && $_GET['action']
                 <?php endif; ?>
                 <div class="form-group">
                     <label for="question">Question :</label>
-                    <textarea class="form-control"  type="text" placeholder="Question" name="question" id="question"><?php if (isset($_GET['faq_questions_id'])) echo $faq_question['question'] ?></textarea>
+                    <textarea class="form-control" type="text" placeholder="Question" name="question"
+                              id="question"><?php if (isset($_GET['faq_questions_id'])) echo $faq_question['question'] ?></textarea>
 
-                    <?php if (isset($_POST['question'])AND (empty($_POST['question']) )) : ?>
-                        <div style="color: #CD0018"><?php echo "La question est obligatoire " ; ?></div>
+                    <?php if (isset($_POST['question']) AND (empty($_POST['question']))) : ?>
+                        <div style="color: #CD0018"><?php echo "La question est obligatoire "; ?></div>
                     <?php endif; ?>
 
                 </div>
                 <div class="form-group">
                     <label for="answer">Réponse : </label>
-                    <textarea class="form-control"  type="text" placeholder="Réponse" name="answer" id="answer"><?php if (isset($_GET['faq_questions_id'])) echo $faq_question['answer'] ?></textarea>
+                    <textarea class="form-control" type="text" placeholder="Réponse" name="answer"
+                              id="answer"><?php if (isset($_GET['faq_questions_id'])) echo $faq_question['answer'] ?></textarea>
 
-                    <?php if (isset($_POST['answer'])AND (empty($_POST['answer']) )) : ?>
-                        <div style="color: #CD0018"><?php echo "La réponse est obligatoire " ; ?></div>
+                    <?php if (isset($_POST['answer']) AND (empty($_POST['answer']))) : ?>
+                        <div style="color: #CD0018"><?php echo "La réponse est obligatoire "; ?></div>
                     <?php endif; ?>
 
                 </div>
@@ -116,18 +114,18 @@ if(isset($_GET['faq_questions_id']) && isset($_GET['action']) && $_GET['action']
 
                 <div class="form-group">
                     <label for="categories"> Catégorie </label>
-                    <select class="form-control" name="categories" id="categories" >
+                    <select class="form-control" name="categories" id="categories">
                         <?php
-                        $queryCategory= $db ->query('SELECT * FROM faq_category');
+                        $queryCategory = $db->query('SELECT * FROM faq_category');
                         $categories = $queryCategory->fetchAll();
                         ?>
-                        <?php foreach($categories as $key => $category) : ?>
+                        <?php foreach ($categories as $key => $category) : ?>
 
                             <?php
                             $selected = '';
 
-                                if($category['id'] == $faq_question['id_faq_category']){
-                                    $selected = 'selected="selected"';
+                            if ($category['id'] == $faq_question['id_faq_category']) {
+                                $selected = 'selected="selected"';
                             }
                             ?>
                             <option value="<?= $category['id']; ?>" <?= $selected; ?>> <?= $category['name']; ?> </option>
@@ -146,7 +144,8 @@ if(isset($_GET['faq_questions_id']) && isset($_GET['action']) && $_GET['action']
                 </div>
 
 
-                <input type="hidden" name="id" value="<?php if (isset($_GET['faq_questions_id'])) echo $faq_question['id'];  ?>">
+                <input type="hidden" name="id"
+                       value="<?php if (isset($_GET['faq_questions_id'])) echo $faq_question['id']; ?>">
 
             </form>
 

@@ -1,7 +1,4 @@
-<?php require_once('_tools.php'); ?>
-
-
-<?php
+<?php require_once('_tools.php');
 
 $query = $db->query('SELECT news.*, medias.img, medias.video
 FROM news
@@ -9,8 +6,7 @@ INNER JOIN medias
 ON news.id = medias.new_id');
 
 $homeNews = $query->fetchAll();
-// print_r($homeEvents);
-// die();
+
 ?>
 
 
@@ -27,7 +23,7 @@ $homeNews = $query->fetchAll();
     <title>Accueil</title>
 </head>
 <body>
-<?php require_once 'partials/header.php'?>
+<?php require_once 'partials/header.php' ?>
 <section class="container">
     <div class="generale">
         <section class="haut">
@@ -52,7 +48,8 @@ $homeNews = $query->fetchAll();
                 <!--  <div class="numbertext"><?php // echo $event['title'] ;?></div>-->
                 <img src="img/<?php echo $homeNew['img']; ?>">
                 <div class="text">
-                    <a href="new.php?new_id=<?php echo $homeNew['id'];?>"><h3> <?php echo $homeNew['title']; ?></h3></a>
+                    <a href="new.php?new_id=<?php echo $homeNew['id']; ?>"><h3> <?php echo $homeNew['title']; ?></h3>
+                    </a>
                 </div>
             </div>
         <?php endforeach; ?>

@@ -1,7 +1,7 @@
 <?php
-require ('../_tools.php');
+require('../_tools.php');
 
-if(isset($_GET['new_id']) && isset($_GET['action']) && $_GET['action'] == 'delete'){
+if (isset($_GET['new_id']) && isset($_GET['action']) && $_GET['action'] == 'delete') {
 
     $query = $db->prepare('DELETE FROM medias WHERE new_id = ?');
     $result = $query->execute([
@@ -13,10 +13,9 @@ if(isset($_GET['new_id']) && isset($_GET['action']) && $_GET['action'] == 'delet
         $_GET['new_id']
     ]);
     //générer un message à afficher plus bas pour l'administrateur
-    if($result){
+    if ($result) {
         $message = "Suppression efféctuée.";
-    }
-    else{
+    } else {
         $message = "Impossible de supprimer la séléction.";
     }
 }
@@ -24,7 +23,6 @@ if(isset($_GET['new_id']) && isset($_GET['action']) && $_GET['action'] == 'delet
 $query = $db->query('SELECT * FROM news');
 $news = $query->fetchall();
 ?>
-
 
 
 <!DOCTYPE html>
@@ -42,7 +40,6 @@ $news = $query->fetchall();
 
     <div class="row my-3 index-content">
         <?php require 'partials/nav.php'; ?>
-
 
 
         <section class="col-9">
@@ -68,11 +65,13 @@ $news = $query->fetchall();
                 <tbody>
                 <?php foreach ($news as $key => $new) : ?>
                     <tr>
-                        <td><?php echo $new['id']?></td>
-                        <td><?php echo html_entity_decode($new['title'])?></td>
-                        <th><?php echo $new['is_publish']?></th>
+                        <td><?php echo $new['id'] ?></td>
+                        <td><?php echo html_entity_decode($new['title']) ?></td>
+                        <th><?php echo $new['is_publish'] ?></th>
                         <td>
-                            <a onclick="return confirm('Are you sure?')" href="news_list.php?new_id=<?php echo $new['id']; ?>&action=delete" class="btn btn-danger">Supprimer</a>
+                            <a onclick="return confirm('Are you sure?')"
+                               href="news_list.php?new_id=<?php echo $new['id']; ?>&action=delete"
+                               class="btn btn-danger">Supprimer</a>
                             <a href="new_form.php?new_id=<?php echo $new['id']; ?>&action=edit" class="btn btn-warning">Modifier</a>
 
                         </td>

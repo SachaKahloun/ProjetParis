@@ -1,7 +1,5 @@
-<?php require_once('_tools.php'); ?>
-
-
 <?php
+require_once('_tools.php');
 
 $query = $db->query('SELECT *
 FROM events
@@ -33,7 +31,7 @@ $events = $query->fetchAll();
     </style>
 </head>
 <body>
-<?php require_once 'partials/header.php'?>
+<?php require_once 'partials/header.php' ?>
 <section class="container">
     <div class="generaleAll">
         <p class="presentation">Venez assister à tous les evènements<br>de votre ville</p>
@@ -48,24 +46,24 @@ $events = $query->fetchAll();
     <input type="date" id="myID">
 </section>
 <?php foreach ($events as $event): ?>
-    <section class="<?php if ($event['id'] % 2 != 0){
+    <section class="<?php if ($event['id'] % 2 != 0) {
         echo 'primary grey';
-    }
-    else{
+    } else {
         echo 'primary';
     }; ?>">
         <h2 class="h2EventList"><?= $event['title']; ?></h2>
         <section class="thirdContainer">
-            <div class="globalPictureEventList"><img class="pictureEventList" alt="" src="img/<?php echo $event['img']; ?>"></div>
+            <div class="globalPictureEventList"><img class="pictureEventList" alt=""
+                                                     src="img/<?php echo $event['img']; ?>"></div>
             <div class="summary">
                 <?php echo $event['summary']; ?><br><br>
-                Date: <?php echo $event['event_date'];?><br><br>
-                Heure: <?php echo $event['event_time'];?><br><br>
-                Lieu: <?php echo $event['address'];?>
+                Date: <?php echo $event['event_date']; ?><br><br>
+                Heure: <?php echo $event['event_time']; ?><br><br>
+                Lieu: <?php echo $event['address']; ?>
             </div>
         </section>
         <div class="learn">
-            <a href="event.php?event_id=<?php echo $event['event_id'];?>">En savoir plus...</a>
+            <a href="event.php?event_id=<?php echo $event['event_id']; ?>">En savoir plus...</a>
         </div>
     </section>
 <?php endforeach; ?>
@@ -75,9 +73,9 @@ $events = $query->fetchAll();
 <script>
 
 
-        document.querySelector('.picker input').addEventListener('change', function () {
-            console.log(document.querySelector('.picker input').value)
-        })
+    document.querySelector('.picker input').addEventListener('change', function () {
+        console.log(document.querySelector('.picker input').value)
+    })
 
 </script>
 
