@@ -13,6 +13,7 @@ if (isset($_POST['firstSignal'])){
     }
 }
 
+
 if (isset($_POST['secondSignal'])){
     if (empty($_POST['firstName']) OR empty($_POST['lastName']) OR empty($_POST['phone']) OR empty($_POST['message'])){
         $messageError = 'Veuillez remplir les champs obligatoires.';
