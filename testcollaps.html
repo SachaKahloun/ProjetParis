@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+    <style>
+        .collapsible {
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            text-align: left;
+            outline: none;
+            width: 100%;
+            /*font-size: 15px;*/
+        }
+
+        .active, .collapsible:hover {
+            background-color: white;
+        }
+
+        .collapsible:after {
+            content: '\002B';
+            color: black;
+            font-weight: bold;
+            float: right;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        .content img {
+            width: 300px;
+        }
+        button{
+            padding-top: 0;
+
+        }
+
+        .mairie {
+            width: 300px;
+            padding: 50px 10px 0 10px;
+        }
+        .paris{
+            font-style: italic;
+            margin: 0;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 30px;
+            padding-left: 220px;
+        }
+
+        h1:after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            display: block;
+            background-color: red;
+            margin-top: 10px;
+        }
+
+        .secondContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            /*align-items: center;*/
+            width: 80%;
+            margin: auto;
+            border: 1px solid black;
+            padding-top: 30px;
+
+        }
+
+        .thirdContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .historyimg {
+            width: 98%;
+            padding: 10px;
+            margin: auto;
+            height: 500px;
+        }
+
+        .historytext {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+<section class="secondContainer">
+    <section class="thirdContainer">
+        <div>
+            <img class="historyimg" src="./img/mairieparis.jpg">
+        </div>
+        <div class="historytext">
+            <p class="paris">Paris a été fondée au 1er siècle av.J.C. par la tribu celtique des Parisii. À l'origine c'était un petit
+                village
+                de pêcheurs, situé sur la plus grande île de la Seine, l'Île de la Cité, actuellement le cœur de Paris.
+                En 508, Clovis, après avoir chassé les romain de Paris, s'y installe et en fait la capitale du
+                royaume
+                des
+                Francs. Le royaume a rapidemment été divisé, suite à l'invasion Vikking, et Paris est pratiquement
+                laissée à
+                l'abandon sous les règnes de Pépin le Bref et de Charlemagne notamment.</p>
+
+            <button class="collapsible"></button>
+
+            <div class="content">
+                    <p>C'est Hugues Capet qui y
+                        rétablit sa
+                        résidence sur l'île de la Cité au début de son règne en 987. Auguste,...)</p>
+                    <p>L’histoire de Paris remonte autour de l’an 259 avant J-C, lorsque la petite tribu des Parisii fonda
+                        la ville sur la rive droite de la Seine. Ce premier peuple de pêcheurs tomba entre les mains des
+                        Romains qui fondèrent la ville de Lutèce en l’an 52 avant J-C. <br><br>
+                        La ville ne prendra le nom de Paris qu’au IVème siècle. Durant cette époque, la légende raconte que
+                        la ville résista à l’invasion d’Attila grâce à l’intervention de Sainte Geneviève (la sainte
+                        patronne de la ville).
+
+                        Clovis, roi des Francs, décida de faire de Paris la capitale du pays en l’an 508. Et c’est en l’an
+                        987 que s’installa la dynastie capétienne jusqu’en 1328.<br><br>
+                        Le 14 juillet 1789, les Parisiens attaquèrent la Bastille, symbole de l’absolutisme monarchique, et
+                        ce fut le 3 septembre 1791 que la première Constitution fut promulguée dans l’histoire de France.
+                        Celle-ci ne conférait plus qu’au roi le pouvoir exécutif et le droit de véto contre les lois
+                        approuvées par l’Assemblée Législative.</p>
+
+            </div>
+        </div>
+    </section>
+</section>
+
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
