@@ -1,6 +1,11 @@
 <?php
 require('../_tools.php');
 
+if(!isset($_SESSION['user']) OR $_SESSION['user']['is_admin'] == 0){
+    header('location:../index.php');
+    exit;
+}
+
 $firstname = isset($_POST['firstname']) ? $_POST['firstname'] : NULL;
 $lastname = isset($_POST['lastname']) ? $_POST['lastname'] : NULL;
 $email = isset($_POST['email']) ? $_POST['email'] : NULL;

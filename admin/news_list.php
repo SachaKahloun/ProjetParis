@@ -1,6 +1,11 @@
 <?php
 require('../_tools.php');
 
+if(!isset($_SESSION['user']) OR $_SESSION['user']['is_admin'] == 0){
+    header('location:../index.php');
+    exit;
+}
+
 if (isset($_GET['new_id']) && isset($_GET['action']) && $_GET['action'] == 'delete') {
 
     $query = $db->prepare('DELETE FROM medias WHERE new_id = ?');

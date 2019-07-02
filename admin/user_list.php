@@ -1,6 +1,11 @@
 <?php
 require('../_tools.php');
 
+if(!isset($_SESSION['user']) OR $_SESSION['user']['is_admin'] == 0){
+    header('location:../index.php');
+    exit;
+}
+
 //supprimer l'utilisateur dont l'ID est envoyé en paramètre URL
 if (isset($_GET['user_id']) && isset($_GET['action']) && $_GET['action'] == 'delete') {
 

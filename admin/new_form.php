@@ -1,6 +1,11 @@
 <?php
 require('../_tools.php');
 
+if(!isset($_SESSION['user']) OR $_SESSION['user']['is_admin'] == 0){
+    header('location:../index.php');
+    exit;
+}
+
 if (isset($_POST['save'])) {
 
     if (!empty($_POST['title']) AND !empty($_POST['summary']) AND !empty($_POST['content']) AND !empty($_POST['is_publish']) AND !empty($_POST['publish_at']) AND !empty($_FILES['image']['name'])) {
