@@ -1,8 +1,5 @@
 <?php require_once('_tools.php'); ?>
 
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -107,30 +104,6 @@
             padding: 0;
             margin: 0;
         }
-        /*.header {
-            display: block;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 100%;
-            box-shadow: none;
-            background-color: #FC466B;
-            position: fixed;
-            height: 60px!important;
-            overflow: hidden;
-            z-index: 10;
-        }
-        .main {
-            margin: 0 auto;
-            display: block;
-            height: 100%;
-            margin-top: 60px;
-        }
-        .mainInner{
-            display: table;
-            height: 100%;
-            width: 100%;
-            text-align: center;
-        }*/
         .mainInner div{
             display:table-cell;
             vertical-align: middle;
