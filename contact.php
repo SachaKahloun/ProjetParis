@@ -17,7 +17,8 @@ if (isset($_POST['secondSignal'])) {
     if (empty($_POST['firstName']) OR empty($_POST['lastName']) OR empty($_POST['phone']) OR empty($_POST['message'])) {
         $messageError = 'Veuillez remplir les champs obligatoires.';
     } else {
-        $messageValidate = 'Votre demande a bien été transmise.';
+        $messageValidate = 'Votre demande a bien été transmise. Un mail de confirmation vous a été envoyé.';
+        mailTo($_POST['email']);
     }
 }
 

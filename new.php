@@ -42,8 +42,8 @@ if (isset($_GET['new_id']) AND ctype_digit($_GET['new_id'])) {
     </div>
     <img class="pictureNew" alt="" src="img/<?php echo $newSimple['img']; ?>">
     <div class="textNew">
-        <?php echo $newSimple ['summary']; ?><br>
-        <?php echo $newSimple ['content']; ?>
+        <?php echo html_entity_decode($newSimple ['summary']); ?><br>
+        <?php echo html_entity_decode($newSimple ['content']); ?>
     </div>
     <a href="new_list.php" class="returnNew">Retour aux actualités</a>
 </div>

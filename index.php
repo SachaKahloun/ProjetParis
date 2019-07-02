@@ -50,7 +50,7 @@ $homeNews = $query->fetchAll();
                 <!--  <div class="numbertext"><?php // echo $event['title'] ;?></div>-->
                 <img src="img/<?php echo $homeNew['img']; ?>">
                 <div class="text">
-                    <a href="new.php?new_id=<?php echo $homeNew['id']; ?>"><h3> <?php echo $homeNew['title']; ?></h3>
+                    <a href="new.php?new_id=<?php echo $homeNew['id']; ?>"><h3><?php echo html_entity_decode($homeNew['title']); ?></h3>
                     </a>
                 </div>
             </div>
