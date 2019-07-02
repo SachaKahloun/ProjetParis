@@ -10,17 +10,13 @@ AND is_publish = 1');
 $homeNews = $query->fetchAll();
 
 ?>
-
-
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Accueil</title>
 </head>
@@ -50,7 +46,7 @@ $homeNews = $query->fetchAll();
                 <!--  <div class="numbertext"><?php // echo $event['title'] ;?></div>-->
                 <img src="img/<?php echo $homeNew['img']; ?>">
                 <div class="text">
-                    <a href="new.php?new_id=<?php echo $homeNew['id']; ?>"><h3><?php echo html_entity_decode($homeNew['title']); ?></h3>
+                    <a href="new.php?new_id=<?php echo $homeNew['id']; ?>"><h3> <?php echo html_entity_decode($homeNew['title']); ?></h3>
                     </a>
                 </div>
             </div>
@@ -68,7 +64,7 @@ $homeNews = $query->fetchAll();
 </section>
 
 
-<?php require_once 'partials/footer.php'; ?>
+<?php require_once 'partials/footer.php'; ?> 
 <script src="./assets/js/js.js"></script>
 </body>
 </html>
