@@ -46,7 +46,7 @@ WHERE user_id = ? ');
         <h2>Mes informations</h2>
         <h4>Nom: <?php echo $_SESSION['user']['lastname']; ?></h4>
         <h4>Prénom: <?php echo $_SESSION['user']['firstname']; ?></h4>
-        <h4 style="color: black">Téléphone: <?php echo $_SESSION['user']['phone_number']; ?></h4>
+        <h4>Téléphone: <?php echo $_SESSION['user']['phone_number']; ?></h4>
         <h4>
             Adresse: <?php echo $_SESSION ['user']['address'] . ' ' . $_SESSION ['user']['zip_code'] . ' ' . $_SESSION ['user']['city']; ?></h4>
     </section>
