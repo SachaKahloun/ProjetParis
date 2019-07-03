@@ -94,7 +94,7 @@ if (isset($_POST['secondSignal'])) {
             <input id="last_name" type="text" name="lastName"
                    value="<?php if (isset($_SESSION['user'])): ?><?php echo $_SESSION['user']['lastname']; ?> <?php endif; ?>"
                    placeholder="Votre prénom"/><br>
-            <input type="number" id="phone_number" name="phone"
+            <input type="tel" id="phone_number" name="phone"
                    value="<?php if (isset($_SESSION['user'])): ?><?php echo $_SESSION['user']['phone_number']; ?> <?php endif; ?>"
                    placeholder="Votre numèro de téléphone" required><br>
             <input id="email" type="email" name="email"

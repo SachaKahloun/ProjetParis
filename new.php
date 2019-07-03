@@ -38,7 +38,7 @@ if (isset($_GET['new_id']) AND ctype_digit($_GET['new_id'])) {
 <body>
 <div class="containerNew">
     <div class="titleNew">
-        <h1><?php echo $newSimple['title']; ?></h1>
+        <h1><?php echo html_entity_decode($newSimple['title']); ?></h1>
     </div>
     <img class="pictureNew" alt="" src="img/<?php echo $newSimple['img']; ?>">
     <div class="textNew">

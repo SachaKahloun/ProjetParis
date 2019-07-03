@@ -11,7 +11,7 @@ function mailTo($destination){
     }
 //=====Déclaration des messages au format texte et au format HTML.
         $message_txt = "Bonjour, votre message nous a bien été transmis. Celui-ci sera traité dans les plus brefs délais. Merci de votre confiance.";
-        $message_html = "<html><head></head><body><b>Bonjour</b><br>, votre message nous a bien été transmis. Celui-ci sera traité dans les plus brefs délais.<br><b>Merci de votre confiance.</b> </body></html>";
+        $message_html = "<html><head></head><body>Bonjour,<br>votre message nous a bien été transmis. Celui-ci sera traité dans les plus brefs délais.<br>Merci de votre confiance.</body></html>";
 
 //==========
 
