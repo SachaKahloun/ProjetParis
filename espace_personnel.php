@@ -55,23 +55,28 @@ WHERE user_id = ? ');
 <section class="firstBills">
     <section class="secondBills">
         <h2>Mes factures</h2>
-        <?php foreach ($bills as $bill): ?>
-            <section class="thirdBills">
+        <?php if (count($bills) > 0): ?>
+            <?php foreach ($bills as $bill): ?>
+                <section class="thirdBills">
 
-                <div class="informationBillAll"><h4><?php echo $bill['bill_from']; ?></h4></div>
-                <div class="informationBillAll"><?php echo $bill['bill_date']; ?></div>
-                <div class="informationBillAll"><?php echo $bill['amount_due']; ?>€</div>
-                <div>
-                    <?php if ($bill['is_payed'] == 0): ?>
-                        <button class="payement"><?php echo 'Payer'; ?></button>
-                    <?php else: ?>
-                        <p style="color: green" class="payee"><?php echo 'Payée'; ?></p>
-                    <?php endif; ?>
-                </div>
-                <button class="toView"><a href="./assets/pdf/<?= $bill['image']; ?>.pdf" target="_blank">Visualiser</a>
-                </button>
-            </section>
-        <?php endforeach; ?>
+                    <div class="informationBillAll"><h4><?php echo $bill['bill_from']; ?></h4></div>
+                    <div class="informationBillAll"><?php echo $bill['bill_date']; ?></div>
+                    <div class="informationBillAll"><?php echo $bill['amount_due']; ?>€</div>
+                    <div>
+                        <?php if ($bill['is_payed'] == 0): ?>
+                            <button class="payement"><?php echo 'Payer'; ?></button>
+                        <?php else: ?>
+                            <p style="color: green" class="payee"><?php echo 'Payée'; ?></p>
+                        <?php endif; ?>
+                    </div>
+                    <button class="toView"><a href="./assets/pdf/<?= $bill['image']; ?>.pdf"
+                                              target="_blank">Visualiser</a>
+                    </button>
+                </section>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <?php echo 'Il n\'y a aucune facture à afficher.'; ?>
+        <?php endif; ?>
     </section>
 </section>
 <?php require_once 'partials/footer.php'; ?>
