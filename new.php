@@ -30,7 +30,7 @@ if (isset($_GET['new_id']) AND ctype_digit($_GET['new_id'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title><?php echo $newSimple['title'] ?></title>
+    <title><?php echo html_entity_decode($newSimple['title']); ?></title>
 </head>
 
 <?php require_once 'partials/header.php' ?>
