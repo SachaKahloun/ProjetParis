@@ -35,16 +35,6 @@ let repeat = function () {
 }
 repeat()
 
-/*
-for (let i = 0; i < words.length; i++) {
-    setTimeout(function () {
-        adj.innerText = words[i]
-    }, 2000 * i)
-
-}
-
-*/
-
 /* caroussel */
 
 let slideIndex = 1;

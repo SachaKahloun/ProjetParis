@@ -32,7 +32,7 @@ const hashchange = function(){
 window.addEventListener('hashchange', hashchange)
 hashchange()
 
-/* select multipl*/
+
 let arrReason = new Object();
 arrReason.secondList = {
     "voirie": ['Mobiliers', 'Revêtements', 'Signalisations au sol'],
